@@ -1,0 +1,15 @@
+{
+  "kubernetes": {
+    "k8s_api_root": "http://192.168.7.203:8080",
+    "k8s_cluster_name": "k8s"
+  },
+  "neutron": {
+    "neutron_url": "http://192.168.7.211:9696",
+    "default_subnet_id": "76aa33bc-c9c1-4834-bcfc-aefd28206997"
+  },
+  "lb_refresh_interval": 2,
+  "use_service_subnet": false,
+  "clean_orphan_loadbalancers": true,
+  "auto_clean_orphan_ports": true,
+  "orphan_ports_resync_interval": 1800
+}

@@ -16,7 +16,11 @@ k8s2lb监听kubernetes的service及对应的endpoints，并将其对应映射为
 ​	基于go语言实现，可以直接使用`go build`进行编译。如下所示：
 
 ```shell
-git clone 
+git clone https://github.com/swordboy/k8s2lb.git
+cd k8s2lb
+export GOPATH=$(pwd)
+cd src
+go build main.go
 ```
 
 ​	生成的二进制文件即可用于运行

@@ -1,15 +1,6 @@
 # 概述
 
-k8s2lb监听kubernetes的service及对应的endpoints，并将其对应映射为neutron lbaasv2中的loadbalancer，实现负载均衡功能。在neutron基础上，与skynet结合，还可以提供浮动IP、VPN、安全组等网络特性。
-
-资源映射关系如下所示：
-
-+ service:  neutron lbaasv2 loadbalancer
-+ service port:  neutron lbaasv2 listener
-+ endpoints: neutron lbaasv2 pool
-+ pod+targetPort：neutron lbaasv2 member
-
-
+​	k8s2lb监听kubernetes的service及对应的endpoints，并将其对应映射为neutron lbaasv2中的loadbalancer，实现负载均衡功能。在neutron基础上，与skynet结合，还可以提供浮动IP、VPN、安全组等网络特性。
 
 # 编译
 
@@ -64,3 +55,6 @@ cd src/k8s2lb&&go build k8s2lb.go
 > auto_clean_orphan_ports：是否自动清理neutron中与，kubernetes pod无法对应的port（不包含dhcp等neutron专用port）。默认为false。
 >
 > orphan_ports_resync_interval：清理orphan ports是，重新全部同步数据的时间间隔。单位为秒。
+
+# TBD
+

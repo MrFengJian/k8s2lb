@@ -22,7 +22,8 @@ cd src/k8s2lb&&go build k8s2lb.go
 {
   "kubernetes" : {
     "k8s_api_root" : "http://192.168.7.203:8080",
-    "k8s_cluster_name" : "k8s"
+    "k8s_cluster_name" : "k8s",
+    "kube_config_path": ""
   },
   "neutron" : {
     "neutron_url" : "http://192.168.7.211:9696",
@@ -41,6 +42,8 @@ cd src/k8s2lb&&go build k8s2lb.go
 > k8s_api_root: kubernetes master的访问点，例如http://192.168.7.208:8080。目前仅支持http。
 >
 > k8s_cluster_name：kubernetes集群名称，默认值为k8s，在两个不同kubernetes集群接入同一个neutron网络节点时必须配置。
+>
+> kube_config_path：连接kubernetes master使用的kubeconfig配置文件路径，与k8s_api_root冲突，两者不能同时配置。
 >
 > neutron_url：neutron-server的访问点，例如http://192.168.7.210:9696，目前仅支持HTTP，且neutron-server的认证模式需要改为none。
 >

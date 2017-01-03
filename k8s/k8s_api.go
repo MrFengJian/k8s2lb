@@ -15,7 +15,7 @@ type K8sApi struct {
 }
 
 func NewK8sApi(conf *util.Conf) (*K8sApi) {
-        config, _ := clientcmd.BuildConfigFromFlags(conf.Kubernetes.K8sApiRoot, "")
+        config, _ := clientcmd.BuildConfigFromFlags(conf.Kubernetes.K8sApiRoot, conf.Kubernetes.KubeConfig)
         client, _ := kubernetes.NewForConfig(config)
         return &K8sApi{Client:client, conf:conf}
 }

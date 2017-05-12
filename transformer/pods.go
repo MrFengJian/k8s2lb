@@ -34,6 +34,10 @@ func SyncPods(conf *util.Conf) error {
         existedPods := make(map[string]string)
         for i, s := 0, len(podList.Items); i < s; i++ {
                 pod := podList.Items[i]
+                //for hostmode pod ,skip
+                if pod.Spec.HostNetwork{
+                        continue;
+                }
                 existedPods[fmt.Sprintf("%s-%s", pod.ObjectMeta.Namespace, pod.ObjectMeta.Name)] = pod.Status.PodIP
         }
         for i, s := 0, len(ports); i < s; i++ {

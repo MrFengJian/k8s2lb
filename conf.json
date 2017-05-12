@@ -1,11 +1,11 @@
 {
   "kubernetes": {
-    "k8s_api_root": "http://192.168.7.203:8080",
+    "k8s_api_root": "http://192.168.254.60:8080",
     "k8s_cluster_name": "k8s"
   },
   "neutron": {
-    "neutron_url": "http://192.168.7.211:9696",
-    "default_subnet_id": "76aa33bc-c9c1-4834-bcfc-aefd28206997"
+    "neutron_url": "http://192.168.254.70:9696",
+    "default_subnet_id": "4e20e690-0711-4b8f-a55b-d4cb117db801"
   },
   "lb_refresh_interval": 2,
   "use_service_subnet": false,

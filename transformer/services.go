@@ -19,8 +19,14 @@ const SUBNET_KEY = "skynet/subnet_id"
 
 var CACHE map[string]*v1.Service
 
+var SYSTEM_EPS_SKIP map[string]string
 func init() {
         CACHE = make(map[string]*v1.Service)
+        SYSTEM_EPS_SKIP=make(map[string]string)
+        //these
+        SYSTEM_EPS_SKIP["kube-scheduler"]="kube-scheduler"
+        SYSTEM_EPS_SKIP["kube-controller-manager"]="kube-controller-manager"
+        SYSTEM_EPS_SKIP["kube-proxy"]="kube-proxy"
 }
 
 func SyncServices(conf *util.Conf) {
@@ -78,8 +84,10 @@ func SyncServices(conf *util.Conf) {
         }
         for event := range endpointsChan {
                 if ep, ok := event.Object.(*v1.Endpoints); ok {
-                        fmt.Println("receive watch endpoints event ", event.Type, "name: ", ep.ObjectMeta.Name, "namespace: ", ep.ObjectMeta.Namespace)
-                        syncEp(k8sApi, neutronApi, ep, event.Type, conf)
+                        if _,ok=SYSTEM_EPS_SKIP[ep.ObjectMeta.Name];!ok{
+                                fmt.Println("receive watch endpoints event ", event.Type, "name: ", ep.ObjectMeta.Name, "namespace: ", ep.ObjectMeta.Namespace)
+                                syncEp(k8sApi, neutronApi, ep, event.Type, conf)
+                        }
                 }
         }
         fmt.Println("service sync exit abnormally,try restart")

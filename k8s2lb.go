@@ -9,10 +9,17 @@ import (
         "time"
 )
 
+const VERSION="1.0"
+
 func main() {
         configPath := flag.String("conf", "./conf.json", "config file for k8s2lb")
+        version:=flag.Bool("version",false,"show version")
 
         flag.Parse()
+        if *version{
+                fmt.Println(VERSION)
+                os.Exit(0)
+        }
         var conf *Conf
         conf, err := LoadConf(*configPath)
         if err != nil {
